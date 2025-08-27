@@ -110,72 +110,6 @@ function explodeHearts() {
     document.addEventListener('copy', (event) => event.preventDefault());
     document.addEventListener('paste', (event) => event.preventDefault());
     document.addEventListener('dragstart', (event) => event.preventDefault());
-  
-  
-// Biến trạng thái để theo dõi việc phát hiện Developer Tools
-let devToolsOpen = false;
-
-// Hàm phát hiện và xử lý khi Developer Tools được mở
-function handleDevToolsDetection() {
-  const threshold = 160;
-  const devToolsIsNowOpen = window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold;
-
-  if (devToolsIsNowOpen && !devToolsOpen) {
-    devToolsOpen = true;
-    console.warn("Developer Tools đã được phát hiện! Chuyển hướng ngay lập tức.");
-    
-    // Chuyển hướng đến một trang trắng ngay lập tức
-    window.location.href = "about:blank";
-  } else if (!devToolsIsNowOpen && devToolsOpen) {
-    // Đặt lại trạng thái nếu DevTools đã đóng
-    devToolsOpen = false;
-  }
-}
-
-// Lắng nghe sự kiện thay đổi kích thước và kiểm tra định kỳ
-window.addEventListener('resize', handleDevToolsDetection);
-setInterval(handleDevToolsDetection, 500);
-
-// Chặn các phím tắt và hành động chuột
-document.addEventListener('keydown', (event) => {
-  // Chặn phím F12 và các tổ hợp phím khác
-  if (
-    event.key === 'F12' ||
-    (event.ctrlKey && event.shiftKey && ['I', 'C', 'J', 'K'].includes(event.key.toUpperCase())) ||
-    (event.metaKey && event.altKey && ['I', 'C', 'J'].includes(event.key.toUpperCase()))
-  ) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-});
-
-// Chặn chuột phải và các hành vi sao chép
-document.addEventListener('contextmenu', (event) => event.preventDefault());
-document.addEventListener('selectstart', (event) => event.preventDefault());
-document.addEventListener('copy', (event) => event.preventDefault());
-document.addEventListener('cut', (event) => event.preventDefault());
-document.addEventListener('paste', (event) => event.preventDefault());
-
-
-    // Đoạn code JavaScript để chặn Developer Tools và các thao tác khác
-    // Chặn phím tắt F12, Ctrl+Shift+I, Ctrl+U để mở Developer Tools
-    document.addEventListener('keydown', (event) => {
-      if (
-        event.key === 'F12' ||
-        (event.ctrlKey && event.shiftKey && event.key === 'I') ||
-        (event.ctrlKey && event.key === 'u')
-      ) {
-        event.preventDefault();
-        return false;
-      }
-    });
-
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-    document.addEventListener('selectstart', (event) => event.preventDefault());
-    document.addEventListener('cut', (event) => event.preventDefault());
-    document.addEventListener('copy', (event) => event.preventDefault());
-    document.addEventListener('paste', (event) => event.preventDefault());
-    document.addEventListener('dragstart', (event) => event.preventDefault());
 
     // Biến trạng thái để theo dõi việc phát hiện Developer Tools
 
@@ -331,3 +265,4 @@ document.addEventListener('keydown', (event) => {
     event.stopPropagation();
   }
 });
+
